@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D49673F6-D4D0-4AF5-9CE0-652665F32238}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SP</RootNamespace>
+    <AssemblyName>Sparky4CSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App\Application.cs" />
+    <Compile Include="App\Input.cs" />
+    <Compile Include="App\Window.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Events\Event.cs" />
+    <Compile Include="Events\EventDispatcher.cs" />
+    <Compile Include="Events\IEventListener.cs" />
+    <Compile Include="Events\KeyEvent.cs" />
+    <Compile Include="Events\MouseEvent.cs" />
+    <Compile Include="Events\WindowEvent.cs" />
+    <Compile Include="Graphics\API\BufferLayout.cs" />
+    <Compile Include="Graphics\API\Context.cs" />
+    <Compile Include="Graphics\API\VertexArray.cs" />
+    <Compile Include="Graphics\API\VertexBuffer.cs" />
+    <Compile Include="Graphics\Layers\Layer.cs" />
+    <Compile Include="Graphics\Renderer.cs" />
+    <Compile Include="Graphics\Shaders\Shader.cs" />
+    <Compile Include="Graphics\Shaders\ShaderFactory.cs" />
+    <Compile Include="Graphics\Shaders\ShaderManager.cs" />
+    <Compile Include="Graphics\Shaders\ShaderResourceDeclaration.cs" />
+    <Compile Include="Graphics\Shaders\ShaderUniformDeclaration.cs" />
+    <Compile Include="Maths\AABB.cs" />
+    <Compile Include="Maths\Maths.cs" />
+    <Compile Include="Maths\Matrix4.cs" />
+    <Compile Include="Maths\Rectangle.cs" />
+    <Compile Include="Maths\TVector2.cs" />
+    <Compile Include="Maths\Vector2.cs" />
+    <Compile Include="Maths\Vector3.cs" />
+    <Compile Include="Maths\Vector4.cs" />
+    <Compile Include="Platform\OpenGL\GLContext.cs" />
+    <Compile Include="Platform\OpenGL\GLRenderer.cs" />
+    <Compile Include="Platform\OpenGL\GLShader.cs" />
+    <Compile Include="Platform\OpenGL\GLShaderResource.cs" />
+    <Compile Include="Platform\OpenGL\GLShaderUniform.cs" />
+    <Compile Include="Platform\OpenGL\GLTypes.cs" />
+    <Compile Include="Platform\OpenGL\GLVertexBuffer.cs" />
+    <Compile Include="Platform\OpenGL\GLVertexArray.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sound\Sound.cs" />
+    <Compile Include="Sound\SoundManager.cs" />
+    <Compile Include="StringFormat.cs" />
+    <Compile Include="System\Allocator.cs" />
+    <Compile Include="System\FileSystem.cs" />
+    <Compile Include="System\MemoryManager.cs" />
+    <Compile Include="System\System.cs" />
+    <Compile Include="System\VFS.cs" />
+    <Compile Include="Utils\ExtensionMethods.cs" />
+    <Compile Include="Utils\Log.cs" />
+    <Compile Include="Utils\Timer.cs" />
+    <Compile Include="Utils\Timestep.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenGLWrapper\OpenGLWrapper.csproj">
+      <Project>{2d505e8c-0b50-45fc-877b-7704af9f4bd6}</Project>
+      <Name>OpenGLWrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WIN32Wrapper\WIN32Wrapper.csproj">
+      <Project>{78805eeb-cb6e-4651-b211-66e9d372d0bc}</Project>
+      <Name>WIN32Wrapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
